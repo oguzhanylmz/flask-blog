@@ -3,7 +3,11 @@
 {% block body %}
 <h3>Makaleler</h3>
 <hr>
-
-
-<a href="about">Geri Dön</a>
+<ul>
+    {% for article in articles  %}
+    <li> <a href="articles/{{article.id}}">{{article.title}}</a> </li>
+    {% endfor %}
+</ul>
+<p>{{data}}</p>
+<a href="about">Ana Sayfa</a>
 {% endblock %}

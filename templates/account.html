@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Hesap Bilgileri</h3>
+<hr>
+İsim: {{name}}
+<br>
+Kullanıcı Adı: {{session.username}}
+<br>
+Mail: {{mail}}
+<hr>
+<a href="password_update">Şifre Değiştir</a>
+<br>
+<a href="my_articles">Makalelerim</a>
+{% endblock  %}
