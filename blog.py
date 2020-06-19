@@ -76,21 +76,20 @@ def articles():
 def contact():
     return render_template("contact.html")
 
-@app.route("/articles/<string:id>") # Dinamik url
+@app.route("/article/<string:id>") # Dinamik url
 def article_dynamic(id):
     cursor = mysql.connection.cursor()
-    sorgu = "Select content FROM articles"
-    cursor.execute(sorgu)
+    sorgu = "Select * from articles where id = %s"
+    cursor.execute(sorgu,(id,))
     data = cursor.fetchone()
-    return data["content"]
-
+    return render_template("article.html",title=data["title"],content=data["content"])
 @app.route("/my_articles/<string:id>") # Dinamik url
 def myarticle_dynamic(id):
     cursor = mysql.connection.cursor()
     sorgu = "SELECT * FROM articles WHERE id = %s"
     cursor.execute(sorgu,(id,))
     data = cursor.fetchone()
-    return data["content"]
+    return render_template("article.html",title=data["title"],content=data["content"])
 
 
 # Kayıt Olma
